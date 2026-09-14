@@ -1,4 +1,4 @@
-# ETAPA 1: Construirea frontend-ului (Tailwind / Vite)
+# ETAPA 1: Frontend (Tailwind / Vite)
 FROM node:20-alpine AS frontend
 WORKDIR /app
 COPY package*.json ./
@@ -6,10 +6,10 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# ETAPA 2: Mediul PHP / Laravel (PHP 8.3)
-FROM php:8.3-cli
+# ETAPA 2: Laravel pe PHP 8.4
+FROM php:8.4-cli
 
-# Instalare pachete de sistem și extensii PHP
+# Dependințe de sistem și extensii PHP
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     curl \
@@ -19,25 +19,23 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-install pdo pdo_sqlite zip bcmath \
     && rm -rf /var/lib/apt/lists/*
 
-# Composer oficial
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-# Copiere cod sursă
 COPY . .
 
-# Copiere asset-urile compilate
+# Copiere fișiere statice din frontend
 COPY --from=frontend /app/public/build ./public/build
 
-# Fișier temporar de mediu
+# Fișier .env provizoriu
 RUN cp -n .env.example .env || true
 
-# Instalare pachete PHP (generează automat și autoloader-ul)
-RUN composer install --no-dev --no-scripts --prefer-dist --no-interaction --ignore-platform-reqs
+# Instalare pachete PHP compatibile
+RUN composer install --no-dev --no-scripts --prefer-dist --no-interaction
 
-# Pregătire fișier SQLite
+# Pregătire SQLite
 RUN touch database/database.sqlite
 
-# Script de pornire: aplică migrările și pornește pe portul alocat de Render
+# Lansare pe portul Render
 CMD sh -c "php artisan key:generate --force && php artisan migrate --force && php artisan serve --host 0.0.0.0 --port \${PORT:-8000}"
