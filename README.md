@@ -1,2 +1,5 @@
 # RCA-Broker-Gateway 📝
 Welcome to **RCA Broker Gateway**, a full-stack platform built with Laravel, MySQL, and Tailwind CSS to automate real-time comparasion, quoting, and instant online mandatory RCA policies in conformity with Romanian law. The application integrates directly with external broker REST APIs, strictly aligning with national ASF and BAAR requirements. Whether you are an everyday driver searching for the best prices and best rate or an administrator checking technical API payloads, RCA Broker Gateway streamlines the entire insurance lifecycle.
+
+## Description 📑
+RCA Broker Gateway delivers and end-to-end automated workflow where users can generate RCA quotes, evaluate Bonus-Malus rating levels, the configuration of optional direct compensation, and the issuance of official policy documents on the spot. The application includes a dedicated **User Dashboard**, where an user can track their current of previous policies, an **Admin Audit Trail** to inspect external REST API payloads and HTTP statutes, and an intelligent **AI Insurance Assistant** which can answer questions regarding the Romanian motor legislation in real time.
