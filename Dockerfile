@@ -9,7 +9,7 @@ RUN npm run build
 # ETAPA 2: Mediul PHP / Laravel (PHP 8.3)
 FROM php:8.3-cli
 
-# Instalare pachete de sistem de bază și extensii PHP
+# Instalare pachete de sistem și extensii PHP
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     curl \
@@ -30,20 +30,14 @@ COPY . .
 # Copiere asset-urile compilate
 COPY --from=frontend /app/public/build ./public/build
 
-# Configurare fișier temporar .env
+# Fișier temporar de mediu
 RUN cp -n .env.example .env || true
 
-# Rulare composer fără scripturi și ignorând verificările rigide
+# Instalare pachete PHP (generează automat și autoloader-ul)
 RUN composer install --no-dev --no-scripts --prefer-dist --no-interaction --ignore-platform-reqs
 
-# Generare autoloader complet
-RUN composer dump-autoload --optimize
-
-# Pregătire SQLite
+# Pregătire fișier SQLite
 RUN touch database/database.sqlite
 
-EXPOSE 8000
-
-CMD php artisan key:generate --force && \
-    php artisan migrate --force && \
-    php artisan serve --host 0.0.0.0 --port 8000
+# Script de pornire: aplică migrările și pornește pe portul alocat de Render
+CMD sh -c "php artisan key:generate --force && php artisan migrate --force && php artisan serve --host 0.0.0.0 --port \${PORT:-8000}"
