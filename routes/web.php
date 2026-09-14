@@ -3,7 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RcaCalculatorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RcaChatController;
+use App\Http\Middleware\AdminAuditAccess;
 
+Route::post('/api/chat/ask', [RcaChatController::class, 'ask']);
 /**
  * This file is dedicated for where the web routes are registered in the application.
  */
@@ -40,9 +43,10 @@ Route::middleware('auth')->group(function () {
 /**
  * Audit trails and logs viewer
  */
-// Endpoints for listing all API audit trails and viewing raw request/response payloads
-Route::get('/audit-logs', [RcaCalculatorController::class, 'listAuditLogs']);
-Route::get('/audit-log/{id}', [RcaCalculatorController::class, 'viewAuditLog']);
+Route::middleware(AdminAuditAccess::class)->group(function () {
+    Route::get('/audit-logs', [RcaCalculatorController::class, 'listAuditLogs']);
+    Route::get('/audit-log/{id}', [RcaCalculatorController::class, 'viewAuditLog']);
+});
 
 // Load authentication workflow routes (e.g. login, register, passwords) from auth.php
 require __DIR__.'/auth.php';

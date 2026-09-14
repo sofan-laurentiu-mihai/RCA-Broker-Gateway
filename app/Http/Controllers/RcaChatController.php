@@ -49,7 +49,7 @@ class RcaChatController extends Controller
                 ->timeout(20)
                 ->acceptJson()
                 ->asJson()
-                ->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={$geminiKey}", [
+                ->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={$geminiKey}", [
                     'contents' => [
                         [
                             'role' => 'user',
