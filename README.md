@@ -3,3 +3,11 @@ Welcome to **RCA Broker Gateway**, a full-stack platform built with Laravel, MyS
 
 ## Description 📑
 RCA Broker Gateway delivers and end-to-end automated workflow where users can generate RCA quotes, evaluate Bonus-Malus rating levels, the configuration of optional direct compensation, and the issuance of official policy documents on the spot. The application includes a dedicated **User Dashboard**, where an user can track their current of previous policies, an **Admin Audit Trail** to inspect external REST API payloads and HTTP statutes, and an intelligent **AI Insurance Assistant** which can answer questions regarding the Romanian motor legislation in real time.
+
+## Features ⭐
+
+* **Multi-step Form:** An asynchronous Single Page Application style wizard that collects the users information, official administrative code (SIRUTA), and vehicle specifications without full-page reloads.
+* **Quote Engine:** Fetches live insurance rates from broker REST endpoints and displays the price comparasion, including Bonus-Malus rating classes and exact validity dates.
+* **Direct Compensation Add-on:** A switch for the client to recalculate its offer and update the total payable premium when selecting optional direct claim handling.
+* **Policy Issuance and Validation:** A secure transaction handler that verifies active policies, prevents duplicates of policies with the same VIN, and commits finalized contracts to customer profile.
+* 
