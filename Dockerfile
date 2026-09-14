@@ -13,7 +13,7 @@ WORKDIR /var/www
 COPY . .
 
 # Instalare dependințe PHP și JS + build Tailwind
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --no-scripts --optimize-autoloader --no-interaction
 RUN npm install && npm run build
 
 # Creare fișier bază de date SQLite
