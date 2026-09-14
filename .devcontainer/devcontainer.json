@@ -1,0 +1,18 @@
+{
+    "name": "RCA Broker Gateway Codespace",
+    "image": "mcr.microsoft.com/devcontainers/php:1-8.2",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "20"
+        }
+    },
+    "forwardPorts": [8000],
+    "portsAttributes": {
+        "8000": {
+            "label": "RCA Broker App",
+            "onAutoForward": "openBrowser"
+        }
+    },
+    "postCreateCommand": "cp -n .env.example .env || true && composer install && npm install && npm run build && php artisan key:generate && touch database/database.sqlite && php artisan migrate --force",
+    "postStartCommand": "php artisan serve --host=0.0.0.0 --port=8000"
+}
