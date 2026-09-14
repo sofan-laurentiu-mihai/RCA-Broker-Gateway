@@ -1,9 +1,8 @@
 # RCA-Broker-Gateway 📝
-Welcome to **RCA Broker Gateway**, a full-stack platform built with Laravel, MySQL, and Tailwind CSS to automate real-time comparasion, quoting, and instant online mandatory RCA policies in conformity with Romanian law. The application integrates directly with external broker REST APIs, strictly aligning with national ASF and BAAR requirements. Whether you are an everyday driver searching for the best prices and best rate or an administrator checking technical API payloads, RCA Broker Gateway streamlines the entire insurance lifecycle.
+Welcome to **RCA Broker Gateway**, a web app built with Laravel, MySQL, and Tailwind CSS designed to make finding and buying Romanian mandatory car insurance (RCA) simple and fast. It connect directly to insurance broker REST APIs in line with ASF and BAAR regulations, helping drivers compare live offers and get their policy on the spot, while giving admins a clear view of underlying API traffic.
 
 ## Description 📑
-RCA Broker Gateway delivers and end-to-end automated workflow where users can generate RCA quotes, evaluate Bonus-Malus rating levels, the configuration of optional direct compensation, and the issuance of official policy documents on the spot. The application includes a dedicated **User Dashboard**, where an user can track their current of previous policies, an **Admin Audit Trail** to inspect external REST API payloads and HTTP statutes, and an intelligent **AI Insurance Assistant** which can answer questions regarding the Romanian motor legislation in real time.
-
+RCA Broker Gateway guides users through an easy, end-to-end flow: enter car and driver details, check real-time quotes, apply Bonus-Malus ratings, toggle direct settlement, and issue the policy document right away. The app features a clean **User Dashboard** to keep track of active and past policies, an **Admit Audit Trail** protected by authentication to inspect incoming and outgoing API calls with their raw HTTP status codes, and an **AI Insurance Assistant** ready to explain Romanian traffic rules and policy questions in plain Romanian or English.
 ## Screenshots 📷
 
 ### Form page and AI Chatbot
