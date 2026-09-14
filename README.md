@@ -19,4 +19,4 @@ RCA Broker Gateway delivers and end-to-end automated workflow where users can ge
 * **Layered Security Architecture:** Standardized session authentication with Bcrypt password hashing, signed verification URLs, CSRF token validation on AJAX requests, and rate-limiting middleware.
 * **Embbeded AI RCA Assistant:** Chatbot integrated with Google Gemini API providing instant, context-aware advice on ASF regulations, Bonus-Malus adjustments, and claim resolution steps.
 
-  [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=USERUL_TAU/NUME_REPO)
+  [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=sofan-laurentiu-mihai/RCA-Broker-Gateway)
